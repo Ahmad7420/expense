@@ -29,7 +29,7 @@ export const ExpenseRecordTable: React.FC<IProps> = ({
               <td className="p-2 border flex gap-6 items-center justify-center">
                 <button
                   onClick={() => handleEdit(e)}
-                  className="text-blue-500 hover:underline hover:cursor-pointer"
+                  className="text-black hover:underline hover:cursor-pointer"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

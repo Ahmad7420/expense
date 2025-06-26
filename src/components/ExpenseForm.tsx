@@ -87,7 +87,7 @@ export const ExpenseForm: React.FC<IProps> = ({
           </div>
         )}
       </div>
-      <div className="mb-2 md:mb-0">
+      <div className="mb-2 md:mb-0 col-span-2">
         <label
           htmlFor="paymentMethod"
           className="block text-sm font-medium text-gray-700 mb-1"
@@ -110,8 +110,8 @@ export const ExpenseForm: React.FC<IProps> = ({
           </div>
         )}
       </div>
-
-      <div className="flex flex-col md:flex-row gap-2 md:col-span-3">
+      <div></div>
+      <div className="flex flex-col md:flex-row gap-2 md:col-span-2">
         <button
           type="submit"
           className="bg-black text-white p-2 rounded hover:bg-gray-700 transition w-full md:max-w-[50%] hover:cursor-pointer"
@@ -121,7 +121,10 @@ export const ExpenseForm: React.FC<IProps> = ({
         {editingExpense && setEditOpen && (
           <button
             type="button"
-            onClick={() => setEditOpen(false)}
+            onClick={() => {
+              setEditOpen(false);
+              formik.resetForm();
+            }}
             className="p-2 rounded hover:bg-gray-300 transition w-full md:max-w-[50%] hover:cursor-pointer border border-gray-300"
           >
             Cancel

@@ -8,6 +8,8 @@ import { categories } from "@/app/constant/expense";
 import { ExpenseForm } from "./ExpenseForm";
 import { EditExpenses } from "./EditExpenses";
 import { DeleteConformationDialog } from "./DeleteConformationDialog";
+import { ExpenseRecordTable } from "./ExpenseRecordTable";
+// import {} from "@mui/icons-material";
 
 export const ExpenseViewPageContent: React.FC = () => {
   const [expenses, setExpenses] = useState<any[]>([]);
@@ -22,7 +24,7 @@ export const ExpenseViewPageContent: React.FC = () => {
         (!filter.date || exp.date.startsWith(filter.date)) &&
         (!filter.category || exp.category === filter.category)
     );
-  }, [expenses]);
+  }, [expenses, filter]);
 
   const fetchExpenses = async () => {
     const response = await axios.get("/api/expenses");
@@ -100,11 +102,11 @@ export const ExpenseViewPageContent: React.FC = () => {
           <input
             type="date"
             onChange={(e) => setFilter({ ...filter, date: e.target.value })}
-            className="input"
+            className="input border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
           />
           <select
             onChange={(e) => setFilter({ ...filter, category: e.target.value })}
-            className="input"
+            className="input border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
           >
             <option value="">All Categories</option>
             {categories.map((c) => (
@@ -113,45 +115,11 @@ export const ExpenseViewPageContent: React.FC = () => {
           </select>
         </div>
       </div>
-      <div className="w-full overflow-x-auto">
-        <table className="w-full min-w-max mt-4 border">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="p-2 border">Date</th>
-              <th className="p-2 border">Category</th>
-              <th className="p-2 border">Description</th>
-              <th className="p-2 border">Amount</th>
-              <th className="p-2 border">Payment</th>
-              <th className="p-2 border">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredExpenses.map((e) => (
-              <tr key={e._id} className="border-t">
-                <td className="p-2 border">{e.date}</td>
-                <td className="p-2 border">{e.category}</td>
-                <td className="p-2 border">{e.description}</td>
-                <td className="p-2 border">{e.amount}</td>
-                <td className="p-2 border">{e.paymentMethod}</td>
-                <td className="p-2 border flex gap-2">
-                  <button
-                    onClick={() => handleEdit(e)}
-                    className="text-blue-500 hover:underline hover:cursor-pointer"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => setDeleteConfirmId(e._id)}
-                    className="text-red-500 hover:underline hover:cursor-pointer"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <ExpenseRecordTable
+        filteredExpenses={filteredExpenses}
+        handleEdit={handleEdit}
+        setDeleteConfirmId={setDeleteConfirmId}
+      />
 
       <DeleteConformationDialog
         deleteConfirmId={deleteConfirmId}

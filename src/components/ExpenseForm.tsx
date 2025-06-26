@@ -12,7 +12,14 @@ export const ExpenseForm: React.FC<IProps> = ({
       className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full border border-gray-300 rounded p-4 bg-white"
     >
       <div className="mb-2 md:mb-0">
+        <label
+          htmlFor="date"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Date
+        </label>
         <input
+          id="date"
           type="date"
           {...formik.getFieldProps("date")}
           className="input border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
@@ -22,7 +29,14 @@ export const ExpenseForm: React.FC<IProps> = ({
         )}
       </div>
       <div className="mb-2 md:mb-0">
+        <label
+          htmlFor="category"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Category
+        </label>
         <select
+          id="category"
           {...formik.getFieldProps("category")}
           className="input border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
         >
@@ -36,7 +50,14 @@ export const ExpenseForm: React.FC<IProps> = ({
         )}
       </div>
       <div className="mb-2 md:mb-0">
+        <label
+          htmlFor="amount"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Amount
+        </label>
         <input
+          id="amount"
           type="number"
           placeholder="Amount"
           {...formik.getFieldProps("amount")}
@@ -47,7 +68,14 @@ export const ExpenseForm: React.FC<IProps> = ({
         )}
       </div>
       <div className="md:col-span-3 mb-2">
+        <label
+          htmlFor="description"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Description
+        </label>
         <textarea
+          id="description"
           rows={3}
           placeholder="Description"
           {...formik.getFieldProps("description")}
@@ -60,7 +88,14 @@ export const ExpenseForm: React.FC<IProps> = ({
         )}
       </div>
       <div className="mb-2 md:mb-0">
+        <label
+          htmlFor="paymentMethod"
+          className="block text-sm font-medium text-gray-700 mb-1"
+        >
+          Payment Method
+        </label>
         <select
+          id="paymentMethod"
           {...formik.getFieldProps("paymentMethod")}
           className="input border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400 w-full"
         >

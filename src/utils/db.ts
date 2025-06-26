@@ -7,7 +7,6 @@ let db: Db;
 
 export async function connectToDatabase(): Promise<Db> {
     if (!client) {
-        console.log('here in db');
 
         client = new MongoClient(url);
         await client.connect();

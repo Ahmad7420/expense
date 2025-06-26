@@ -5,7 +5,6 @@ export async function GET() {
     try {
         const db = await connectToDatabase();
         const expenses = await db.collection('user_records').find().toArray();
-        console.log('expenses', expenses);
 
         return NextResponse.json(expenses);
     } catch (error) {

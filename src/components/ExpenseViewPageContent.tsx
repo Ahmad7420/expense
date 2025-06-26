@@ -59,8 +59,6 @@ export const ExpenseViewPageContent: React.FC = () => {
     onSubmit: async (values) => {
       if (editingExpense) {
         const res = await axios.put(`/api/expenses/${values._id}`, values);
-        console.log(res);
-
         setExpenses((prev) =>
           prev.map((exp) =>
             exp._id === editingExpense._id ? { ...exp, ...values } : exp
@@ -70,7 +68,6 @@ export const ExpenseViewPageContent: React.FC = () => {
         setEditOpen(false);
       } else {
         const res = await axios.post("/api/expenses", values);
-        console.log(res);
 
         setExpenses((prev) => [...prev, res.data.data]);
       }
@@ -87,7 +84,6 @@ export const ExpenseViewPageContent: React.FC = () => {
   const handleDelete = async () => {
     if (deleteConfirmId) {
       const res = await axios.delete(`/api/expenses/${deleteConfirmId}`);
-      console.log(res);
 
       setExpenses((prev) => prev.filter((e) => e._id !== deleteConfirmId));
       setDeleteConfirmId(null);

@@ -20,7 +20,7 @@
 
 import { MongoClient, Db } from 'mongodb';
 
-const uri = 'mongodb+srv://ahmadabdulrahman6:JgBLeDYQo2AYAgtg@expense.snmjfj1.mongodb.net/?retryWrites=true&w=majority&appName=expense';
+const uri = 'mongodb+srv://ahmadabdulrahman6:JgBLeDYQo2AYAgtg@expense.snmjfj1.mongodb.net/records?retryWrites=true&w=majority&tls=true&appName=expense';
 const dbName = 'records';
 
 if (!uri) {

@@ -69,7 +69,8 @@ export const ExpenseViewPageContent: React.FC = () => {
         setEditingExpense(null);
         setEditOpen(false);
       } else {
-        const res = await axios.post("/api/expenses", values);
+        const { _id, ...payload } = values;
+        const res = await axios.post("/api/expenses", payload);
 
         setExpenses((prev) => [...prev, res.data.data]);
       }
